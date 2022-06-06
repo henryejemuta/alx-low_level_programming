@@ -29,12 +29,12 @@ for (h = 0;  h < 8; h++)
 	{
 		for (j = 1; j < 10; j++)
 		{
-			if (i < j)
+			if (h < i && i < j)
 			{
 				putchar(h + '0');
 				putchar(i + '0');
 				putchar(j + '0');
-				if (i !=  8)
+				if (!((h == 7) && (i == 8) && (j == 9)))
 				{
 					putchar(',');
 					putchar(' ');
