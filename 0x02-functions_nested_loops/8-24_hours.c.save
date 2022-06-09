@@ -1,0 +1,38 @@
+#include "main.h"
+
+/**
+ * jack_bauer - a function that computes the absolute value of an integer.
+ *
+ * Prototype: int _abs(int);
+ * FYI: The standard library provides a similar
+ * function: abs. Run man abs to learn more.
+ * @a: The argument to compute
+ *
+ * Return: an integer
+ */
+int jack_bauer(void)
+{
+	int i, j;
+
+	i = 0;
+	while (i < 24)
+	{
+		int min_prefix = (i /10);
+		if(i<10)
+			min_prefix = 0;
+
+		for (j = 0; j < 60; j++)
+		{
+ 			_putchar(min_prefix + '0');
+			_putchar((i % 10) + '0');
+			_putchar(':');
+			
+int
+			if(j <  10)
+				_putchar
+	if (a < 0)
+	{
+		return (0 - a);
+	}
+	return (a);
+}
