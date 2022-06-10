@@ -14,7 +14,7 @@
 int main(void)
 {
 	int i;
-	unsigned long int sum, fib1, fib2;
+	unsigned long sum, fib1, fib2;
 
 	fib1 = 1;
 	fib2 = 2;
