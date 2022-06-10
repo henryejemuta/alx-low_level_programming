@@ -16,15 +16,12 @@ int main(void)
 	int i;
 	long int sum, fib1, fib2;
 
-	/* 0th and 1st  numbers of the series are 1 and 2*/
 	fib1 = 1;
 	fib2 = 2;
 
 	printf("1, 2, ");
 	for (i = 2; i < 50; i++)
 	{
-		/* Add the two previous numbers in the series and
-		  store it at the current index */
 		sum = fib1 + fib2;
 		fib1 = fib2;
 		fib2 = sum;
