@@ -18,7 +18,7 @@ int main(void)
 	fib1 = 1;
 	fib2 = 2;
 	sum = 3;
-	evensum = 0;
+	evensum = 2;
 	while (sum < 4000000)
 	{
 		sum = fib1 + fib2;
