@@ -14,19 +14,18 @@
 int main(void)
 {
 int i;
-unsigned long sum, first, last, f, fr, oldf, oldfr, l, lr;
+unsigned long sum, first, last, f, fr, l, lr;
 unsigned long int divisor = 1000000000;
 
 first = 1;
 last = 2;
 
-printf("1, 2");
-for (i = 2; i < 90; i++)
+printf("1");
+for (i = 1; i < 91; i++)
 {
-	sum = first + last;
-	first = last;
-	last = sum;
-	printf(", %ld", sum);
+printf(", %lu", last);
+last = first + last;
+first = last - first;
 }
 
 f = first / divisor;
@@ -35,14 +34,14 @@ l = last / divisor;
 lr = last % divisor;
 for (i = 90; i < 98; i++)
 {
-oldf = f;
-oldfr = fr;
-printf(", %lu", (((oldf *divisor) + oldfr)+((l *divisor) + lr)));
-f = l;
-fr = lr;
-l = (((oldf *divisor) + oldfr)+((l *divisor) + lr)) / divisor;
-lr = (((oldf *divisor) + oldfr)+((l *divisor) + lr)) % divisor;
+printf(", %lu", l + (lr / 1000000000));
+printf("%lu", lr % 1000000000);
+l = l + f;
+f = l - f;
+lr = lr + fr;
+fr = lr - fr;
 }
+
 
 printf("\n");
 return (0);
