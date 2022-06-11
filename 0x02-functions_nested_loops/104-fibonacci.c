@@ -32,7 +32,7 @@ f = first / divisor;
 fr = first % divisor;
 l = last / divisor;
 lr = last % divisor;
-for (i = 90; i < 98; i++)
+for (i = 90; i < 97; i++)
 {
 printf(", %lu", l + (lr / divisor));
 printf("%lu", lr % divisor);
