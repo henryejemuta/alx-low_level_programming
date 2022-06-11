@@ -20,7 +20,7 @@ int main(void)
         last = 2;
 
         printf("1, 2");
-        for (i = 2; i < 91; i++)
+        for (i = 2; i < 90; i++)
         {
                 sum = first + last;
                 first = last;
@@ -32,7 +32,7 @@ int main(void)
         fr = first % 1000000000;
         l = last / 1000000000;
         lr = last % 1000000000;
-        for (i = 92; i <= 98; i++)
+        for (i = 90; i <= 98; i++)
         {
                 oldf = f;
                 oldfr = fr;
