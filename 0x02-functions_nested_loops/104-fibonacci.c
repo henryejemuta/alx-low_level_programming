@@ -15,7 +15,7 @@ int main(void)
 {
 int i;
 unsigned long sum, first, last, f, fr, oldf, oldfr, l, lr;
-unsigned long int divisor = 1000000000000;
+unsigned long int divisor = 1000000000;
 
 first = 1;
 last = 2;
