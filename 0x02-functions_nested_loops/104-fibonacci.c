@@ -37,7 +37,7 @@ for (i = 90; i < 98; i++)
 {
 oldf = f;
 oldfr = fr;
-printf("%s", ", " + (((oldf *divisor) + oldfr)+((l *divisor) + lr)));
+printf(", %lld", (((oldf *divisor) + oldfr)+((l *divisor) + lr)));
 f = l;
 fr = lr;
 l = (((oldf *divisor) + oldfr)+((l *divisor) + lr)) / divisor;
