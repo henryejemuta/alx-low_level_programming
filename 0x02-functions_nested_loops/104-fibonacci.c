@@ -36,8 +36,8 @@ for (i = 90; i < 98; i++)
 {
 oldf = f;
 oldfr = fr;
-printf(", %s", (((oldf * 1000000000000) + oldfr)+
-((l * 1000000000000) + lr))+"");
+printf("%s",", " + (((oldf * 1000000000000) + oldfr)+
+((l * 1000000000000) + lr)));
 f = l;
 fr = lr;
 l = (((oldf * 1000000000000) + oldfr)+
