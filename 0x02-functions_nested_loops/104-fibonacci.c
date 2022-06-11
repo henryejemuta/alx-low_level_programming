@@ -14,7 +14,7 @@
 int main(void)
 {
 int i;
-unsigned long sum, first, last, f, fr, l, lr;
+unsigned long first, last, f, fr, l, lr;
 unsigned long int divisor = 1000000000;
 
 first = 1;
@@ -34,8 +34,8 @@ l = last / divisor;
 lr = last % divisor;
 for (i = 90; i < 98; i++)
 {
-printf(", %lu", l + (lr / 1000000000));
-printf("%lu", lr % 1000000000);
+printf(", %lu", l + (lr / divisor));
+printf("%lu", lr % divisor);
 l = l + f;
 f = l - f;
 lr = lr + fr;
