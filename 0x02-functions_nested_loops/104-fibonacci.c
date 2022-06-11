@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 
 /**
@@ -14,35 +13,36 @@
  */
 int main(void)
 {
-	int i;
-	unsigned long sum, fib1, fib2, f1, f2, fi1, fi2;
+        int i;
+        unsigned long sum, first, last, f, fr, oldf, oldfr, l, lr;
 
-	fib1 = 1;
-	fib2 = 2;
+        first = 1;
+        last = 2;
 
-	printf("1, 2");
-	for (i = 2; i < 91; i++)
-	{
-		sum = fib1 + fib2;
-		fib1 = fib2;
-		fib2 = sum;
-		printf(", %ld", sum);
-	}
+        printf("1, 2");
+        for (i = 2; i < 91; i++)
+        {
+                sum = first + last;
+                first = last;
+                last = sum;
+                printf(", %ld", sum);
+        }
 
-	f1 = fib2 / 1000000000;
-	f2 = fib2 % 1000000000;
-	fi1 = sum / 1000000000;
-	fi2 = sum % 1000000000;
-	for (i = 92; i <= 98; i++)
-	{
-		printf(", %ld", fi1 + (fi2 / 1000000000));
-		printf("%ld", fi2 % 1000000000);
-		fi1 = fi1 + f1;
-		f1 = fi1 - f1;
-		fi2 = fi2 + f2;
-		f2 = fi2 - f2;
-	}
+        f = first / 1000000000;
+        fr = first % 1000000000;
+        l = last / 1000000000;
+        lr = last % 1000000000;
+        for (i = 92; i <= 98; i++)
+        {
+                oldf = f;
+                oldfr = fr;
+                printf(", %ld", (((oldf * 1000000000) + oldfr) + ((l * 1000000000) + lr)));
+                f = l;
+                fr = lr;
+                l = (((oldf * 1000000000) + oldfr) + ((l * 1000000000) + lr)) / 1000000000;
+                lr = (((oldf * 1000000000) + oldfr) + ((l * 1000000000) + lr)) % 1000000000;
+        }
 
-	printf("\n");
-	return (0);
+        printf("\n");
+        return (0);
 }
