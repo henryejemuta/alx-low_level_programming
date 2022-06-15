@@ -8,15 +8,9 @@
  */
 void rev_string(char *s)
 {
-	int fcounter = 0;
-	int i, n;
+	int i;
 
-	for (i = 0; s[i] != '\0'; i++)
-	{
-		fcounter++;
-	}
-
-	for (n = (fcounter - 1); n >= 0; n--)
+	for (i = ( _strlen(s) - 1); i >= 0; i--)
 	{
 		_putchar(s[n]);
 	}
