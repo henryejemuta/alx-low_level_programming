@@ -25,11 +25,12 @@ char *_strcat(char *dest, char *src)
 		dest++;
 	}
 
-	while (*(src + j))
+	while (*src != '\0')
 	{
 		*(dest + i) = *(src + j);
 		i++;
 		j++;
+		src++;
 	}
 	*(dest + j) = '\0';
 	return (dest);
