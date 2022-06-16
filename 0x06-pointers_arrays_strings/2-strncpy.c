@@ -6,6 +6,7 @@
  *
  * @dest: destination
  * @src: start
+ * @n: number of byte to copy
  *
  * Return: the pointer to dest
  */
