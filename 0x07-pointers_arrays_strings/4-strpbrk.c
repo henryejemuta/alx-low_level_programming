@@ -2,7 +2,7 @@
 #define NULL 0
 
 /**
- * unsigned int _strspn - A C a function that
+ * _strpbrk - A C a function that
  * searches a string for any of a set of bytes.
  *
  * The _strpbrk() function locates the first
@@ -20,21 +20,21 @@
  */
 char *_strpbrk(char *s, char *accept)
 {
-	int i = 0, j;
+int i = 0, j;
 
-	while (s[i] != '\0')
+while (s[i] != '\0')
+{
+	j = 0;
+	while (accept[j] != '\0')
 	{
-		j = 0;
-		while (accept[j] != '\0')
+		if (s[i] == accept[j++])
 		{
-			if (s[i] == accept[j++])
-			{
-				s = &s[i];
-				return (s);
-			}
+			s = &s[i];
+			return (s);
 		}
-		i++;
 	}
+	i++;
+}
 
-	return (NULL);
+return (NULL);
 }
