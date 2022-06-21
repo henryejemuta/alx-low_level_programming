@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * unsigned int _strspn - A C a function that
+ * _strspn - A C a function that
  * that gets the length of a prefix substring.
  *
  * Returns the number of bytes in the initial
@@ -16,17 +16,18 @@ unsigned int _strspn(char *s, char *accept)
 {
 int i = 0, j, cnt = 0;
 
-while (s[i] != '\0'){
+while (s[i] != '\0')
+{
 	j = 0;
-        while (accept[j] != '\0')
-        {
-       		if (s[i] == accept[j])
-       		{
-       			cnt++;
-       			break;
-       		}
-	       	if (accept[j + 1] == '\0' && s[i] != accept[j])
-       			return (cnt);
+	while (accept[j] != '\0')
+	{
+		if (s[i] == accept[j])
+		{
+			cnt++;
+			break;
+		}
+		if (accept[j + 1] == '\0' && s[i] != accept[j])
+			return (cnt);
 		j++;
 	}
 	i++;
