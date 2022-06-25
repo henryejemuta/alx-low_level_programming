@@ -29,7 +29,7 @@
  **/
 int main(int argc, char *argv[])
 {
-	int sum = 0, i;
+	int sum = 0;
 
 	while (--argc > 0)
 	{
