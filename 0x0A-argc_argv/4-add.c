@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 	{
 		if (!atoi(argv[argc]))
 		{
-			printf("Error\n");
+			puts("Error");
 			return (1);
 		}
 		sum += atoi(argv[argc]);
