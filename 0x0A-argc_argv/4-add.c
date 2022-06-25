@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
  * main - C program Entry point
@@ -28,15 +29,25 @@
  **/
 int main(int argc, char *argv[])
 {
-	int sum = 0;
+	int sum = 0, i;
 
 	while (--argc > 0)
 	{
-		if (!atoi(argv[argc]))
+		for (i = 0; argv[argc][i]; i++)
 		{
-			puts("Error");
-			return (1);
+			if (isdigit(argv[argc][i]) == 0)
+			{
+				puts("Error");
+				return (1);
+			}
 		}
+/*
+*		if (!atoi(argv[argc]))
+*		{
+*			puts("Error");
+*			return (1);
+*		}
+*/
 		sum += atoi(argv[argc]);
 	}
 
