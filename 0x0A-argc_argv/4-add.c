@@ -33,21 +33,12 @@ int main(int argc, char *argv[])
 
 	while (--argc > 0)
 	{
-		for (i = 0; argv[argc][i]; i++)
+		if (!atoi(argv[argc]))
 		{
-			if (isdigit(argv[argc][i]) == 0)
-			{
-				puts("Error");
-				return (1);
-			}
+			puts("Error");
+			return (1);
 		}
-/*
-*		if (!atoi(argv[argc]))
-*		{
-*			puts("Error");
-*			return (1);
-*		}
-*/
+
 		sum += atoi(argv[argc]);
 	}
 
