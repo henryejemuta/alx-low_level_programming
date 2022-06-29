@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 /**
- * print_rev - A C function that creates an array of
+ * create_array - A C function that creates an array of
  * chars, and initializes it with a specific char.
  *
  * @size: size of array to create
