@@ -14,8 +14,7 @@
  * @s1: first string
  * @s2: second string
  *
- * Return: pointer to newly allocated space in memory,
- * 	   or NULL if error
+ * Return: pointer to newly allocated space in memory, or NULL if error
  */
 char *str_concat(char *s1, char *s2)
 {
@@ -41,12 +40,10 @@ char *str_concat(char *s1, char *s2)
 	a = malloc(k * sizeof(char));
 	if (a == NULL)
 		return (NULL);
-
 	for (cnt = 0; cnt < i; cnt++)
 		a[cnt] = s1[cnt];
-
 	for (cnt = 0; cnt < j; cnt++)
-		a[cnt + i] = s2[cnt];
+	a[cnt + i] = s2[cnt];
 	a[i + j] = '\0';
 	return (a);
 }
