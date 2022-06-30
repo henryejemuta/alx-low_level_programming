@@ -1,6 +1,22 @@
 #include "main.h"
 
 /**
+ * _memset - fills memory with a constant byte
+ * @s: memory area
+ * @b: constant byte
+ * @n: bytes of the memory area
+ * Return: pointer to the memory area s
+ */
+char *_memset(char *s, char b, unsigned int n)
+{
+	char *ptr = s;
+
+	while (n--)
+		*s++ = b;
+	return (ptr);
+}
+
+/**
  * _calloc - A C function that allocates
  * memory for an array, using malloc.
  *
@@ -15,35 +31,20 @@
  * If malloc fails, then _calloc returns NULL
  *
  *
- * @nmemb: number of columns
- * @size: number of rows
+ * @nmemb: number of elements of pointer
+ * @size: size of each member
  *
- * Return: a pointer to a 2 dimensional array of integers. NULL on failure
+ * Return: a pointer of allocated memory
  */
 void *_calloc(unsigned int nmemb, unsigned int size)
 {
-	int **a;
-	unsigned int i, j;
+	void *ptr;
 
-	if (nmemb <= 0 || size <= 0)
+	if (!nmemb || !size)
 		return (NULL);
-	a = (int **)malloc(sizeof(int *) * size);
-	if (a == NULL)
+	ptr = malloc(size * nmemb);
+	if (!ptr)
 		return (NULL);
-
-	for (i = 0; i < size; i++)
-	{
-		a[i] = (int *)malloc(sizeof(int) * nmemb);
-		if (a[i] == NULL)
-		{
-			for (j = 0; j < i; j++)
-				free(a[j]);
-			free(a);
-			return (NULL);
-		}
-		for (j = 0; j < nmemb; j++)
-			a[i][j] = 0;
-	}
-
-	return (a);
+	_memset(ptr, 0, size * nmemb);
+	return (ptr);
 }
