@@ -1,26 +1,65 @@
 #include "main.h"
-#include<math.h>
-#include<stdlib.h>
-#include<string.h>
-#define MAX 10000
+#include <stdlib.h>
 
+/**
+ * _print - moves a string one place to the left and prints the string
+ * @str: string to move
+ * @l: size of string
+ * Return: void
+ */
+void _print(char *str, int l)
+{
+	int i, j;
 
-void multiply(char [], char[]);
+	i = j = 0;
+	while (i < l)
+	{
+		if (str[i] != '0')
+			j = 1;
+		if (j || i == l - 1)
+			_putchar(str[i]);
+		i++;
+	}
+
+	_putchar('\n');
+	free(str);
+}
+
+/**
+ * init - initializes a string
+ * @str: sting to initialize
+ * @l: length of strinf
+ * Return: void
+ */
+void init(char *str, int l)
+{
+	int i;
+
+	for (i = 0; i < l; i++)
+		str[i] = '0';
+	str[i] = '\0';
+}
+
+char *multiply(char n, char *num, int num_index, char *dest, int dest_index);
 
 /**
  * onlyNumbers - determines if string has only numbers
  * @c: input string
  * Return: 0 if false, 1 if true
  */
-int onlyNumbers(char *c)
+int onlyNumbers(char **c)
 {
-	while (*c)
+	int i, j;
+
+	for (i = 1; i < 3; i++)
 	{
-		if (*c < '0' || *c > '9')
-			return (0);
-		c++;
+		for (j = 0; c[i][j]; j++)
+		{
+			if (c[i][j] < '0' || c[i][j] > '9')
+				return (1);
+		}
 	}
-	return (1);
+	return (0);
 }
 
 /**
@@ -42,18 +81,42 @@ int onlyNumbers(char *c)
  */
 int main(int argc, char *argv[])
 {
-	char *f = argv[1];
-	char *s = argv[2];
+	int l1, l2, ln, ti, i;
+	char *a;
+	char *t;
+	char e[] = "Error\n";
 
-	if (argc != 3 || !onlyNumbers(f) || !onlyNumbers(s))
+	if (argc != 3 || onlyNumbers(argv))
 	{
-		printf("Error\n");
+		for (ti = 0; e[ti]; ti++)
+			_putchar(e[ti]);
 		exit(98);
 	}
-	if (*f == 48 || *s == 48)
-		printf("0\n");
-	else
-		multiply(s, f);
+	for (l1 = 0; argv[1][l1]; l1++)
+		;
+	for (l2 = 0; argv[2][l2]; l2++)
+		;
+	ln = l1 + l2 + 1;
+	a = malloc(ln * sizeof(char));
+	if (a == NULL)
+	{
+		for (ti = 0; e[ti]; ti++)
+			_putchar(e[ti]);
+		exit(98);
+	}
+	init(a, ln - 1);
+	for (ti = l2 - 1, i = 0; ti >= 0; ti--, i++)
+	{
+		t = multiply(argv[2][ti], argv[1], l1 - 1, a, (ln - 2) - i);
+		if (t == NULL)
+		{
+			for (ti = 0; e[ti]; ti++)
+				_putchar(e[ti]);
+			free(a);
+			exit(98);
+		}
+	}
+	_print(a, ln - 1);
 	return (0);
 }
 
@@ -61,40 +124,35 @@ int main(int argc, char *argv[])
 
 /**
  * multiply - multiplies two numbers and displays it
- * @f: first "number"
- * @s: second "number"
+ * @n: char to multiply
+ * @num: string to multiply
+ * @num_index: last non NULL index of num
+ * @dest: destination of multiplication
+ * @dest_index: highest index to start addition
+ * Return: pointer to dest, or NULL on failure
  */
-void multiply(char *f, char *s)
+char *multiply(char n, char *num, int num_index, char *dest, int dest_index)
 {
-	int i, len1, len2, total, fdigit, sdigit, res = 0, tmp;
-	int *ptr;
+	int j, k, mul, mulrem, add, addrem;
 
-	len1 = strlen(f);
-	len2 = strlen(s);
-	tmp = len2;
-	total = len1 + len2;
-	ptr = calloc(sizeof(int), (len1 + len2));
-	for (len1--; len1 >= 0; len1--)
+	mulrem = addrem = 0;
+	for (j = num_index, k = dest_index; j >= 0; j--, k--)
 	{
-		fdigit = f[len1] - '0';
-		res = 0;
-		len2 = tmp;
-		for (len2--; len2 >= 0; len2--)
-		{
-			sdigit = s[len2] - '0';
-			res += ptr[len2 + len1 + 1] + (fdigit * sdigit);
-			ptr[len1 + len2 + 1] = res % 10;
-			res /= 10;
-		}
-		if (res)
-			ptr[len1 + len2 + 1] = res % 10;
+		mul = (n - '0') * (num[j] - '0') + mulrem;
+		mulrem = mul / 10;
+		add = (dest[k] - '0') + (mul % 10) + addrem;
+		addrem = add / 10;
+		dest[k] = add % 10 + '0';
 	}
-	while (*ptr == 0)
+	for (addrem += mulrem; k >= 0 && addrem; k--)
 	{
-		ptr++;
-		total--;
+		add = (dest[k] - '0') + addrem;
+		addrem = add / 10;
+		dest[k] = add % 10 + '0';
 	}
-	for (i = 0; i < total; i++)
-		printf("%i", ptr[i]);
-	printf("\n");
+	if (addrem)
+	{
+		return (NULL);
+	}
+	return (dest);
 }
